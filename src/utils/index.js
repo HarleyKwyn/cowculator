@@ -9,12 +9,20 @@ export function createConstants (...constants) {
   }, {});
 }
 
-export function createReducer (initialState, reducerMap) {
-  return (state = initialState, action) => {
-    const reducer = reducerMap[action.type];
-
-    return reducer ? reducer(state, action.payload) : state;
-  };
+// export function createReducer (initialState, reducerMap) {
+//   return (state = initialState, action) => {
+//     const reducer = reducerMap[action.type];
+//     return reducer ? reducer(state, action.payload) : state;
+//   };
+// }
+export function createReducer(initialState, handlers) {
+  return function reducer(state = initialState, action) {
+    if (handlers.hasOwnProperty(action.type)) {
+      return handlers[action.type](state, action);
+    } else {
+      return state;
+    }
+  }
 }
 
 export function createDevToolsWindow (store) {

@@ -34,13 +34,13 @@ const webpackConfig = {
     alias      : config.get('utils_aliases')
   },
   module : {
-    preLoaders : [
-      {
-        test : /\.(js|jsx)$/,
-        loaders : ['eslint-loader'],
-        exclude : /node_modules/
-      }
-    ],
+    // preLoaders : [
+    //   {
+    //     test : /\.(js|jsx)$/,
+    //     loaders : ['eslint-loader'],
+    //     exclude : /node_modules/
+    //   }
+    // ],
     loaders : [
       {
         test : /\.(js|jsx)$/,

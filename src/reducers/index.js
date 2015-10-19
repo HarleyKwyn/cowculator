@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import cowculator from './cowculator';
 
 export default combineReducers({
-  counter
+  cowculator
 });
