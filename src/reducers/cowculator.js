@@ -5,13 +5,13 @@ import { createReducer } from 'utils';
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
-  costToKeep: 0,
+  costToKeep: null,
   costToKeepIsEditable: true,
-  saleWeight: 0,
-  buyWeight: 0,
-  saleUnitValue: 0,
-  buyUnitValue: 0,
-  profit: 0
+  saleWeight: null,
+  buyWeight: null,
+  saleUnitValue: null,
+  buyUnitValue: null,
+  profit: null
 };
 
 function calculateProfit (state) {
@@ -33,8 +33,6 @@ export default createReducer(initialState, {
     return Object.assign({}, state, { costToKeep: action.costToKeep });
   },
   [types.UPDATE_SALE_WEIGHT](state, action) {
-    console.log(state, action)
-
     return calculateProfit(Object.assign({}, state, { saleWeight: action.weight }));
   },
   [types.UPDATE_BUY_WEIGHT](state, action) {
@@ -46,11 +44,4 @@ export default createReducer(initialState, {
   [types.UPDATE_SALE_UNIT_VALUE](state, action) {
     return calculateProfit(Object.assign({}, state, { saleUnitValue: action.unitValue }));
   }
-  // [UPDATE_PROFIT]: (state, action) => {
-  //   const netWeight = state.buyWeight ? (state.saleWeight / state.buyWeight) : 0;
-  //   const netUnitValue = state.buyUnitValue ? (state.saleUnitValue /  state.buyUnitValue) : 0;
-  //   const grossProfit = newUnitValue ? netWeight / netUnitValue : 0;
-  //   state.profit = grossProfit - state.costToKeep;
-  //   return state;
-  // }
 });

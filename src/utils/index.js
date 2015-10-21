@@ -15,10 +15,10 @@ export function createConstants (...constants) {
 //     return reducer ? reducer(state, action.payload) : state;
 //   };
 // }
-export function createReducer(initialState, handlers) {
+export function createReducer(initialState, reducerMap) {
   return function reducer(state = initialState, action) {
-    if (handlers.hasOwnProperty(action.type)) {
-      return handlers[action.type](state, action);
+    if (reducerMap.hasOwnProperty(action.type)) {
+      return reducerMap[action.type](state, action);
     } else {
       return state;
     }

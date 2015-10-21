@@ -2,6 +2,8 @@ import React                  from 'react';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 import * as actionCreators from '../actions/actions';
+import CurrencyInput from '../components/currencyInput';
+import renderDecimal from '../utils/renderDecimal'
 // Normally you'd import your action creators, but I don't want to create
 // a file that you're just going to delete anyways!
 // const actionCreators = {
@@ -41,27 +43,27 @@ export class HomeView extends React.Component {
     return (
       <div className='container text-center'>
         <h1>Cattle-Counter</h1>
-        <h2>Profit: ${this.props.profit} / lb</h2>
+        <h2>Profit: ${renderDecimal(this.props.profit)} / lb</h2>
         <h2>Cost to Keep ($/lb)</h2>
-        <input  type="test"
+        <CurrencyInput
                 value={this.props.costToKeep}
-                onChange={this.props.actions.editCostToKeep}/>
+                onChangeAction={this.props.actions.editCostToKeep}/>
         <h2>Sale Weight (lb/head)</h2>
-        <input  type="text"
+        <CurrencyInput
                 value={this.props.saleWeight}
-                onChange={this.props.actions.updateSaleWeight}/>
+                onChangeAction={this.props.actions.updateSaleWeight}/>
         <h2>Buy Weight (lb/head)</h2>
-        <input  type="text"
+        <CurrencyInput
                 value={this.props.buyWeight}
-                onChange={this.props.actions.updateBuyWeight}/>
+                onChangeAction={this.props.actions.updateBuyWeight}/>
         <h2>Sale Unit Value ($/lb)</h2>
-        <input  type="text"
+        <CurrencyInput
                 value={this.props.saleUnitValue}
-                onChange={this.props.actions.updateSaleUnitValue}/>
+                onChangeAction={this.props.actions.updateSaleUnitValue}/>
         <h2>Buy Unit Value ($/lb)</h2>
-        <input  type="text"
+        <CurrencyInput
                 value={this.props.buyUnitValue}
-                onChange={this.props.actions.updateBuyUnitValue}/>
+                onChangeAction={this.props.actions.updateBuyUnitValue}/>
       </div>
     );
   }
