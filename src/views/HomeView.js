@@ -42,26 +42,47 @@ export class HomeView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-        <h1>Cattle-Counter</h1>
-        <h2>Profit: ${renderDecimal(this.props.profit)} / lb</h2>
-        <h2>Cost to Keep ($/lb)</h2>
+        <h3>Cowculator</h3>
+        <h4
+          className={(()=>{
+            let basename = 'alert alert-';
+            if (this.props.profit > 0) {
+              return basename + 'success';
+            } else if (this.props.profit < 0) {
+              return basename + 'danger';
+            } else {
+              return basename + 'default';
+            }
+          })()}>
+          Profit: ${renderDecimal(this.props.profit)} / lb</h4>
         <CurrencyInput
+                id="costToKeep"
+                labelText="Cost to Keep ($/lb)"
+                className="form-control"
                 value={this.props.costToKeep}
                 onChangeAction={this.props.actions.editCostToKeep}/>
-        <h2>Sale Weight (lb/head)</h2>
         <CurrencyInput
+                id="updateSaleWeight"
+                labelText="Sale Weight (lb/head)"
+                className="form-control"
                 value={this.props.saleWeight}
                 onChangeAction={this.props.actions.updateSaleWeight}/>
-        <h2>Buy Weight (lb/head)</h2>
         <CurrencyInput
+                id="updateSaleWeight"
+                labelText="Buy Weight (lb/head)"
+                className="form-control"
                 value={this.props.buyWeight}
                 onChangeAction={this.props.actions.updateBuyWeight}/>
-        <h2>Sale Unit Value ($/lb)</h2>
         <CurrencyInput
+                id="updateSaleUnitValue"
+                labelText="Sale Unit Value (cwt)"
+                className="form-control"
                 value={this.props.saleUnitValue}
                 onChangeAction={this.props.actions.updateSaleUnitValue}/>
-        <h2>Buy Unit Value ($/lb)</h2>
         <CurrencyInput
+                id="updateBuyUnitValue"
+                labelText="Buy Unit Value (cwt)"
+                className="form-control"
                 value={this.props.buyUnitValue}
                 onChangeAction={this.props.actions.updateBuyUnitValue}/>
       </div>

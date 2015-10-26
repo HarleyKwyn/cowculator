@@ -5,34 +5,44 @@ export default class CurrencyInput extends Component {
 
   handleChange (e) {
     let newValue = e.target.value;
-    if(newValue === ''){
-      this.props.onChangeAction('');
+    if( e.target.valueAsNumber === NaN ){
+      this.props.onChangeAction(null);
       return;
     }
     newValue = newValue.replace('.', '');
+    // TODO: Replace any non numeric symbol.
     newValue = Number(newValue);
-    console.log('number value', newValue);
     this.props.onChangeAction(newValue);
   }
 
-
-
   render() {
+    let label = null;
+    if(this.props.labelText){
+      label = <label
+                    htmlFor={this.props.id}>
+                    {this.props.labelText}
+                    </label>
+    }
     return (
-      <input
-        type="text"
-        className={this.props.className}
-        onChange={this.handleChange.bind(this)}
-        value={renderDecimal(this.props.value)}
-        />
+      <div class="form-group">
+        {label}
+        <input
+          id={this.props.id}
+          type="number"
+          className={this.props.className}
+          onChange={this.handleChange.bind(this)}
+          value={renderDecimal(this.props.value)}
+          />
+      </div>
     );
   }
-
 }
 
 CurrencyInput.propTypes = {
   onChangeAction: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   value: PropTypes.number,
   decimalPlace: PropTypes.number,
-  className: PropTypes.string
+  className: PropTypes.string,
+  labelText: PropTypes.string,
 };

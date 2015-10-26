@@ -6,13 +6,13 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "webpack",
-    "start": "npm run dev",
-    "dev": "node --harmony bin/webpack-dev-server",
+    "start": "nodemon server.js",
+    "dev": "export NODE_ENV=development && node --harmony bin/webpack-dev-server",
     "dev:nw": "npm run dev -- --nw",
     "dev:no-debug": "npm run dev -- --no_debug",
     "test": "node ./node_modules/karma/bin/karma start",
     "test:dev": "npm run test -- --watch",
-    "deploy": "npm run test && npm run compile"
+    "deploy": "export NODE_ENV=production && npm run compile"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
   "dependencies": {
     "babel": "^5.8.23",
     "history": "^1.9.0",
+    "koa": "^1.1.1",
+    "koa-static": "^1.5.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "3.1.0",

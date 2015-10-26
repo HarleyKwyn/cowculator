@@ -15,9 +15,10 @@ const initialState = {
 };
 
 function calculateProfit (state) {
-  const netWeight = state.buyWeight ? (state.saleWeight / state.buyWeight) : 0;
+  const netWeight = state.buyWeight ? (state.saleWeight * 100) / (state.buyWeight * 100) : 0;
   const netUnitValue = state.buyUnitValue ? (state.saleUnitValue /  state.buyUnitValue) : 0;
   const grossProfit = netUnitValue ? netWeight / netUnitValue : 0;
+  // TODO: Manage rounding here
   const netProfit = grossProfit - state.costToKeep;
   return Object.assign({}, state, { profit: netProfit });
 }

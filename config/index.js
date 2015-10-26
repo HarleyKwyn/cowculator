@@ -16,7 +16,6 @@ config.set('dir_dist', 'dist');
 
 config.set('webpack_host',  'localhost');
 config.set('webpack_port', process.env.PORT || 3000);
-
 config.set('vendor_dependencies', [
   'history',
   'react',
