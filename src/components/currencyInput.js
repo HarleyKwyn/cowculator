@@ -9,8 +9,7 @@ export default class CurrencyInput extends Component {
       this.props.onChangeAction(null);
       return;
     }
-    newValue = newValue.replace('.', '');
-    // TODO: Replace any non numeric symbol.
+    newValue = newValue.replace(/[^0-9]/g, '');
     newValue = Number(newValue);
     this.props.onChangeAction(newValue);
   }
