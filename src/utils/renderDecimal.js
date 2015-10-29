@@ -11,7 +11,7 @@ export default function renderDecimal (value, decimalPlaces) {
   }
 
   value = value.replace('.', '');
-  const beforeDecimal = value.substring(0, value.length-decimalPlaces);
+  const beforeDecimal = value.substring(0, value.length-decimalPlaces) || '0';
   const afterDecimal = value.substring(value.length - decimalPlaces);
   return beforeDecimal + '.' + afterDecimal;
 }

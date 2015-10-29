@@ -27,7 +27,7 @@ export default class CurrencyInput extends Component {
         {label}
         <input
           id={this.props.id}
-          type="number"
+          type="tel"
           className={this.props.className}
           onChange={this.handleChange.bind(this)}
           value={renderDecimal(this.props.value)}
