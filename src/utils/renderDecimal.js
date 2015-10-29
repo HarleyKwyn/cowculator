@@ -1,3 +1,4 @@
+import padLeft from "lodash";
 export default function renderDecimal (value, decimalPlaces) {
   if(value === null || value === undefined){
     return '';
@@ -6,7 +7,7 @@ export default function renderDecimal (value, decimalPlaces) {
   decimalPlaces = decimalPlaces || 2;
   value = String(value);
   if(value.length < decimalPlaces){
-    return value;
+    return '0.' + _.padLeft(value, decimalPlaces, '0')
   }
 
   value = value.replace('.', '');
